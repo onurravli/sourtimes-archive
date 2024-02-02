@@ -19,6 +19,17 @@ const main = async () => {
     });
   }
   try {
+    await postgres.createEntriesTable();
+    guvercin.success('Created entries table.');
+  } catch (error) {
+    guvercin.error(`Couldn't create entries table. (${(error as Error).message})`);
+    app.all('*', (req: Request, res: Response) => {
+      return res.status(500).json({
+        error: `Couldn't create entries table. (${(error as Error).message})`,
+      });
+    });
+  }
+  try {
     app.use(express.json());
     app.use('/entry', entryRouter);
     app.listen(port, () => {
