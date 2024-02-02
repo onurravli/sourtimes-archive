@@ -26,16 +26,17 @@ class EntryController {
   }
   public async post(req: Request, res: Response) {
     try {
-      const entry: { content: string; nick: string } = req.body;
+      const entry: { content: string; topic: string; author: string } = req.body;
       const id = generateId();
       const queryStream = `
       INSERT INTO 
-      entries (id, content, author_id, created_at, updated_at, favorites) 
-      VALUES ($1, $2, $3, $4, $5, $6)`;
+      entries (id, content, topic, author, created_at, updated_at, favorites) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7)`;
       const values = [
         id,
         entry.content,
-        entry.nick,
+        entry.topic,
+        entry.author,
         new Date(Date.now()).toISOString(),
         new Date(Date.now()).toISOString(),
         [],
@@ -52,9 +53,7 @@ class EntryController {
       });
     }
   }
-  // eslint-disable-next-line
   public async put(req: Request, res: Response) {}
-  // eslint-disable-next-line
   public async delete(req: Request, res: Response) {}
 }
 
