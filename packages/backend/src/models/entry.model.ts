@@ -1,18 +1,22 @@
+import { Author } from './author.model';
+
 class Entry {
   constructor(
-    public content: string,
-    public author: string,
+    public id: string,
     public topic: string,
+    public content: string,
+    public author: Author,
+    public favorites: Author[],
     public createdAt: Date,
     public updatedAt: Date,
-    public favorites: string[],
   ) {
-    this.content = content;
+    this.id = id;
     this.author = author;
-    this.topic = topic;
+    this.content = content;
     this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
     this.favorites = favorites;
+    this.topic = topic;
+    this.updatedAt = updatedAt;
   }
 }
 
