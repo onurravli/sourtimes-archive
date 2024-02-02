@@ -1,7 +1,7 @@
-import * as crypto from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
-const generateId = (length?: number) => {
-  const id = crypto.randomBytes(length || 25).toString('hex');
+const generateId = () => {
+  const id = uuidv4();
   return id;
 };
 
