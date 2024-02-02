@@ -1,5 +1,3 @@
-import { Entry } from './entry.model';
-
 class Author {
   constructor(
     public id: string,
@@ -7,9 +5,9 @@ class Author {
     public password: string,
     public mail: string,
     public isVerified: boolean,
-    public entries: Entry[],
-    public followers: Author[],
-    public followings: Author[],
+    public entries: string[],
+    public followers: string[],
+    public followings: string[],
   ) {
     this.id = id;
     this.nick = nick;
