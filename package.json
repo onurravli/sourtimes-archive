@@ -13,5 +13,8 @@
   },
   "bugs": {
     "url": "https://github.com/onurravli/sourtimes/issues"
+  },
+  "dependencies": {
+    "prettier": "^3.2.4"
   }
 }
