@@ -9,8 +9,21 @@ const pool = new Pool({
   port: parseInt(env.PG_PORT as string),
 });
 
+const createEntriesTable = async () => {
+  const query = `CREATE TABLE IF NOT EXISTS entries (
+    id VARCHAR(25) PRIMARY KEY NOT NULL,
+    content TEXT NOT NULL,
+    author_id VARCHAR(25) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL,
+    favorites TEXT[] NOT NULL
+  )`;
+  await pool.query(query);
+};
+
 const postgres = {
   pool,
+  createEntriesTable,
 };
 
 export { postgres };
