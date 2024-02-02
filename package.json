@@ -15,6 +15,9 @@
     "url": "https://github.com/onurravli/sourtimes/issues"
   },
   "scripts": {
+    "install:backend": "cd packages/backend && pnpm install",
+    "install:frontend": "cd packages/frontend && pnpm install",
+    "install": "concurrently npm:install:*",
     "format": "prettier .",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
