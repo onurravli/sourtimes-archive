@@ -17,7 +17,6 @@ const connectToDb = async () => {
   collections.authors = authorsCollection;
   collections.entries = entriesCollection;
   collections.topics = topicsCollection;
-  guvercin.success('Connected to MongoDB.');
 };
 
 const mongodb = { collections, connectToDb };
