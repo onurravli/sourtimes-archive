@@ -41,16 +41,27 @@ const main = async () => {
     });
   }
   try {
+    await postgres.createTopicsTable();
+    guvercin.success('Created topics table.');
+  } catch (error) {
+    guvercin.error(`Couldn't create topics table. (${(error as Error).message})`);
+    app.all('*', (req: Request, res: Response) => {
+      return res.status(500).json({
+        error: `Couldn't create topics table. (${(error as Error).message})`,
+      });
+    });
+  }
+  try {
     app.use(express.json());
     app.use('/entry', entryRouter);
     app.listen(port, () => {
       guvercin.info(`Listening on ${port}`);
     });
   } catch (error) {
-    guvercin.error(`Couldn't connect to the database. (${(error as Error).message})`);
+    guvercin.error(`Couldn't start the application. (${(error as Error).message})`);
     app.all('*', (req: Request, res: Response) => {
       return res.status(500).json({
-        error: `Couldn't connect to the database. (${(error as Error).message})`,
+        error: `Couldn't start the application. (${(error as Error).message})`,
       });
     });
   }
