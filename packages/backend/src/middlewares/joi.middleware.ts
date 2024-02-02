@@ -8,7 +8,8 @@ const schemas = {
     }),
     post: Joi.object({
       content: Joi.string().required(),
-      nick: Joi.string().required(),
+      author: Joi.string().required(),
+      topic: Joi.string().required(),
     }),
     put: Joi.object({
       content: Joi.string().optional(),
@@ -17,12 +18,8 @@ const schemas = {
       id: Joi.string().uuid().required(),
     }),
   },
-  topic: {
-    // TODO: Implement joi
-  },
-  author: {
-    // TODO: Implement joi
-  },
+  topic: {},
+  author: {},
 };
 
 const joi = {
@@ -68,14 +65,12 @@ const joi = {
     },
   },
   topic: {
-    // TODO: Implement joi
     get: () => {},
     post: () => {},
     put: () => {},
     delete: () => {},
   },
   author: {
-    // TODO: Implement joi
     get: () => {},
     post: () => {},
     put: () => {},
