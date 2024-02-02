@@ -15,6 +15,9 @@ services:
     volumes:
       - ./:/usr/local/app/
     restart: always
-    depends_on:
-      postgres:
-        condition: service_healthy
+  mongo:
+    env_file:
+      - .env.development
+    image: mongo:latest
+    ports:
+      - '27017:27017'
