@@ -1,3 +1,5 @@
+import { AuthorController } from './author.controller';
 import { EntryController } from './entry.controller';
+import { TopicController } from './topic.controller';
 
-export { EntryController };
+export { AuthorController, EntryController, TopicController };
