@@ -3,10 +3,19 @@ import type { Request, Response, NextFunction } from 'express';
 
 const schemas = {
   entry: {
-    get: Joi.object(),
-    post: Joi.object(),
-    put: Joi.object(),
-    delete: Joi.object(),
+    get: Joi.object({
+      id: Joi.string().hex().length(24).required(),
+    }),
+    post: Joi.object({
+      content: Joi.string().required(),
+      authorId: Joi.string().hex().length(24).required(),
+    }),
+    put: Joi.object({
+      content: Joi.string().optional(),
+    }),
+    delete: Joi.object({
+      id: Joi.string().hex().length(24).required(),
+    }),
   },
 };
 
