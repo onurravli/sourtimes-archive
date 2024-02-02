@@ -4,7 +4,7 @@ import type { Request, Response, NextFunction } from 'express';
 const schemas = {
   entry: {
     get: Joi.object({
-      id: Joi.string().uuid().required(),
+      id: Joi.string().hex().length(24).required(),
     }),
     post: Joi.object({
       content: Joi.string().required(),
