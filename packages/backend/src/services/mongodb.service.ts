@@ -1,6 +1,5 @@
 import { Collection, Db, MongoClient } from 'mongodb';
 import { env } from '../utils';
-import { guvercin } from './guvercin.service';
 
 const collections: {
   authors?: Collection;
