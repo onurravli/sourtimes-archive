@@ -1,15 +1,13 @@
-import { Author } from './author.model';
-
 class Entry {
   constructor(
     public content: string,
-    public author: Author,
+    public authorId: string,
     public createdAt: Date,
     public updatedAt: Date,
-    public favorites: Author[],
+    public favorites: string[],
   ) {
     this.content = content;
-    this.author = author;
+    this.authorId = authorId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.favorites = favorites;
