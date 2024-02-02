@@ -13,7 +13,8 @@ const createEntriesTable = async () => {
   const query = `CREATE TABLE IF NOT EXISTS entries (
     id UUID PRIMARY KEY NOT NULL,
     content TEXT NOT NULL,
-    author_id TEXT NOT NULL,
+    topic TEXT NOT NULL,
+    author TEXT NOT NULL,
     created_at DATE NOT NULL,
     updated_at DATE NOT NULL,
     favorites TEXT[]
@@ -36,10 +37,19 @@ const createAuthorsTable = async () => {
   await pool.query(query);
 };
 
+const createTopicsTable = async () => {
+  const query = `CREATE TABLE IF NOT EXISTS topics (
+    id TEXT PRIMARY KEY,
+    entries UUID[]
+  )`;
+  await pool.query(query);
+};
+
 const postgres = {
   pool,
   createEntriesTable,
   createAuthorsTable,
+  createTopicsTable,
 };
 
 export { postgres };
