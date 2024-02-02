@@ -1,9 +1,9 @@
 class Topic {
   constructor(
-    public name: string,
+    public id: string, // kebab-case
     public entries: string[],
   ) {
-    this.name = name;
+    this.id = id;
     this.entries = entries;
   }
 }
