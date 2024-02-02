@@ -4,6 +4,8 @@ services:
   backend:
     env_file:
       - .env.development
+    environment:
+      - NODE_ENV=development
     image: sourtimes-backend
     build:
       context: .
@@ -14,7 +16,6 @@ services:
       - ${PORT}:${PORT}
     volumes:
       - ./:/usr/local/app/
-    restart: always
   mongo:
     env_file:
       - .env.development
