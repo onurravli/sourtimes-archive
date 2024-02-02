@@ -4,18 +4,24 @@ import type { Request, Response, NextFunction } from 'express';
 const schemas = {
   entry: {
     get: Joi.object({
-      id: Joi.string().hex().length(24).required(),
+      id: Joi.string().uuid().required(),
     }),
     post: Joi.object({
       content: Joi.string().required(),
-      authorId: Joi.string().hex().length(24).required(),
+      nick: Joi.string().required(),
     }),
     put: Joi.object({
       content: Joi.string().optional(),
     }),
     delete: Joi.object({
-      id: Joi.string().hex().length(24).required(),
+      id: Joi.string().uuid().required(),
     }),
+  },
+  topic: {
+    // TODO: Implement joi
+  },
+  author: {
+    // TODO: Implement joi
   },
 };
 
@@ -60,6 +66,20 @@ const joi = {
       }
       return next();
     },
+  },
+  topic: {
+    // TODO: Implement joi
+    get: () => {},
+    post: () => {},
+    put: () => {},
+    delete: () => {},
+  },
+  author: {
+    // TODO: Implement joi
+    get: () => {},
+    post: () => {},
+    put: () => {},
+    delete: () => {},
   },
 };
 
