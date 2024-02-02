@@ -1,6 +1,5 @@
 class Author {
   constructor(
-    public id: string,
     public nick: string,
     public password: string,
     public mail: string,
@@ -8,8 +7,9 @@ class Author {
     public entries: string[],
     public followers: string[],
     public followings: string[],
+    public createdAt: Date,
+    public updatedAt: Date,
   ) {
-    this.id = id;
     this.nick = nick;
     this.password = password;
     this.mail = mail;
@@ -17,6 +17,8 @@ class Author {
     this.entries = entries;
     this.followers = followers;
     this.followings = followings;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 }
 
