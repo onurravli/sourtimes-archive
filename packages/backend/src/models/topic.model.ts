@@ -1,6 +1,6 @@
 class Topic {
   constructor(
-    public id: string, // kebab-case
+    public id: string,
     public entries: string[],
   ) {
     this.id = id;
