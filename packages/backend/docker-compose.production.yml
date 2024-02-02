@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  backend:
+    env_file:
+      - .env.production
+    image: sourtimes-backend
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+      args:
+        - PORT=${PORT}
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./:/usr/local/app/
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DATABASE}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '5432:5432'
+    restart: always
+    env_file:
+      - .env.production
