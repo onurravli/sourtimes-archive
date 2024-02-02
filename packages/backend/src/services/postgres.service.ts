@@ -11,12 +11,27 @@ const pool = new Pool({
 
 const createEntriesTable = async () => {
   const query = `CREATE TABLE IF NOT EXISTS entries (
-    id VARCHAR(25) PRIMARY KEY NOT NULL,
+    id UUID PRIMARY KEY NOT NULL,
     content TEXT NOT NULL,
-    author_id VARCHAR(25) NOT NULL,
-    created_at TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP NOT NULL,
-    favorites TEXT[] NOT NULL
+    author_id TEXT NOT NULL,
+    created_at DATE NOT NULL,
+    updated_at DATE NOT NULL,
+    favorites TEXT[]
+  )`;
+  await pool.query(query);
+};
+
+const createAuthorsTable = async () => {
+  const query = `CREATE TABLE IF NOT EXISTS authors (
+    nick TEXT PRIMARY KEY NOT NULL,
+    password TEXT NOT NULL,
+    mail TEXT NOT NULL,
+    is_verified BOOL NOT NULL,
+    entries UUID[],
+    followers TEXT[],
+    followings TEXT[],
+    created_at DATE NOT NULL,
+    updated_at DATE NOT NULL
   )`;
   await pool.query(query);
 };
@@ -24,6 +39,7 @@ const createEntriesTable = async () => {
 const postgres = {
   pool,
   createEntriesTable,
+  createAuthorsTable,
 };
 
 export { postgres };
