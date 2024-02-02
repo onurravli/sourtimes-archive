@@ -1,0 +1,17 @@
+{
+  "name": "sourtimes",
+  "private": "true",
+  "author": {
+    "name": "onur ravli",
+    "email": "onur@onurravli.com",
+    "url": "https://onurravli.com"
+  },
+  "license": "mit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onurravli/sourtimes"
+  },
+  "bugs": {
+    "url": "https://github.com/onurravli/sourtimes/issues"
+  }
+}
