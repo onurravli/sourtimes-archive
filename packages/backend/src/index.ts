@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import { env } from './utils';
-import { entryRouter } from './routers';
+import { authorRouter, entryRouter } from './routers';
 import { guvercin, mongodb } from './services';
 
 const app: Application = express();
@@ -21,6 +21,7 @@ const main = async () => {
   try {
     app.use(express.json());
     app.use('/entry', entryRouter);
+    app.use('/author', authorRouter);
     app.listen(port, () => {
       guvercin.info(`Listening on ${port}`);
     });
