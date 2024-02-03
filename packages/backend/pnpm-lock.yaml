@@ -25,6 +25,9 @@ dependencies:
     version: 9.0.1
 
 devDependencies:
+  '@types/bcrypt':
+    specifier: ^5.0.2
+    version: 5.0.2
   '@types/express':
     specifier: ^4.17.21
     version: 4.17.21
@@ -107,6 +110,12 @@ packages:
   /@sideway/pinpoint@2.0.0:
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
     dev: false
+
+  /@types/bcrypt@5.0.2:
+    resolution: {integrity: sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ==}
+    dependencies:
+      '@types/node': 20.11.16
+    dev: true
 
   /@types/body-parser@1.19.5:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
