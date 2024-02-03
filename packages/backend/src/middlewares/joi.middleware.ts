@@ -19,7 +19,16 @@ const schemas = {
     }),
   },
   topic: {},
-  author: {},
+  author: {
+    get: Joi.object({
+      nick: Joi.string().required(),
+    }),
+    post: Joi.object({
+      nick: Joi.string().required(),
+      mail: Joi.string().email().required(),
+      password: Joi.string().min(8).required(),
+    }),
+  },
 };
 
 const joi = {
@@ -65,16 +74,32 @@ const joi = {
     },
   },
   topic: {
-    get: () => {},
-    post: () => {},
-    put: () => {},
-    delete: () => {},
+    get: (req: Request, res: Response, next: NextFunction) => {},
+    post: (req: Request, res: Response, next: NextFunction) => {},
+    put: (req: Request, res: Response, next: NextFunction) => {},
+    delete: (req: Request, res: Response, next: NextFunction) => {},
   },
   author: {
-    get: () => {},
-    post: () => {},
-    put: () => {},
-    delete: () => {},
+    get: (req: Request, res: Response, next: NextFunction) => {
+      const { error } = schemas.author.get.validate(req.params);
+      if (error) {
+        return res.status(400).json({
+          error: error.message,
+        });
+      }
+      return next();
+    },
+    post: (req: Request, res: Response, next: NextFunction) => {
+      const { error } = schemas.author.post.validate(req.body);
+      if (error) {
+        return res.status(400).json({
+          error: error.message,
+        });
+      }
+      return next();
+    },
+    put: (req: Request, res: Response, next: NextFunction) => {},
+    delete: (req: Request, res: Response, next: NextFunction) => {},
   },
 };
 
