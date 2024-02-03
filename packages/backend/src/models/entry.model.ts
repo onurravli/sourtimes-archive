@@ -1,8 +1,9 @@
+import { ObjectId } from 'mongodb';
 import { Author } from './author.model';
 
 class Entry {
   constructor(
-    public id: string,
+    public _id: ObjectId,
     public topic: string,
     public content: string,
     public author: Author,
@@ -10,7 +11,7 @@ class Entry {
     public createdAt: Date,
     public updatedAt: Date,
   ) {
-    this.id = id;
+    this._id = _id;
     this.author = author;
     this.content = content;
     this.createdAt = createdAt;

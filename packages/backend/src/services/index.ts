@@ -1,4 +1,4 @@
-import { postgres } from './postgres.service';
 import { guvercin } from './guvercin.service';
+import { mongodb } from './mongodb.service';
 
-export { postgres, guvercin };
+export { guvercin, mongodb };
